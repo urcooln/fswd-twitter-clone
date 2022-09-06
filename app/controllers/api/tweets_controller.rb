@@ -26,7 +26,7 @@ module Api
       user = session.user
       tweet = Tweet.find_by(id: params[:id])
 
-      if tweet and tweet.user == user and tweet.destroy
+      if tweet && (tweet.user == user) && tweet.destroy
         render json: {
           success: true
         }
@@ -48,8 +48,8 @@ module Api
 
     private
 
-      def tweet_params
-        params.require(:tweet).permit(:message, :image)
-      end
+    def tweet_params
+      params.require(:tweet).permit(:message, :image)
+    end
   end
 end

@@ -1,3 +1,2 @@
-RSpec.describe "Sessions", type: :request do
-  
+RSpec.describe 'Sessions', type: :request do
 end

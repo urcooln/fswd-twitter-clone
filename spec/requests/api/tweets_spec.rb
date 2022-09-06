@@ -1,2 +1,2 @@
-RSpec.describe "Tweets", type: :request do
+RSpec.describe 'Tweets', type: :request do
 end
