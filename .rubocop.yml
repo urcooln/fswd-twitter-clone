@@ -13,15 +13,15 @@ Style/BlockDelimiters:
 Style/SymbolProc:
   Exclude:
     - db/migrate/**/*
-Metrics/BlockLength:
-  Enabled: false
 Style/MixinUsage:
-  Enabled: false
-Metrics/MethodLength:
   Enabled: false
 Layout/LineLength:
   Enabled: false
 Style/HashSyntax:
   Enabled: false
-Metrics/AbcSize:
+# Metrics/BlockLength:
+#   Enabled: false
+# Metrics/MethodLength:
+#   Enabled: false
+Metrics:
   Enabled: false
