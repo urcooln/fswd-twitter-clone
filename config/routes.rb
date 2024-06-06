@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  get '/login' => 'static_pages#login'
+  get '/:username' => 'static_pages#user'
 
   namespace :api do
     # USERS

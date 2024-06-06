@@ -3,14 +3,19 @@ module Api
     def create
       @user = User.find_by(username: params[:user][:username])
 
-      if @user && (BCrypt::Password.new(@user.password) == params[:user][:password])
+      puts "@user: #{@user.inspect}"
+
+      if @user && @user.authenticate(params[:user][:password])
         session = @user.sessions.create
         cookies.permanent.signed[:twitter_session_token] = {
           value: session.token,
           httponly: true
         }
 
-        render 'api/sessions/create'
+        render json: {
+          success: true
+        }
+
       else
         render json: {
           success: false
@@ -24,11 +29,13 @@ module Api
 
       if session
         @user = session.user
-        render 'api/sessions/authenticated'
+        render json: {
+          authenticated: true,
+        }, status: :ok
       else
         render json: {
           authenticated: false
-        }
+        }, status: :bad_request
       end
     end
 
@@ -39,6 +46,10 @@ module Api
       if session&.destroy
         render json: {
           success: true
+        }
+      else
+        render json: {
+          success: false
         }
       end
     end

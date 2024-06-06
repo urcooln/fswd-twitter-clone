@@ -1,19 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Layout from '@src/layout'
-import Feed from './tweets/feed'
-
-import './home.scss';
-
-const Home = props => (
-  <Layout>
-  <Feed />
-  </Layout>
-)
+import Login from './login';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Home />,
+    <Login />,
     document.body.appendChild(document.createElement('div')),
   )
 })
